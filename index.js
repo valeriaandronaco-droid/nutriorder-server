@@ -6,7 +6,11 @@ const db = require("./db");
 const { authMiddleware, requireRuolo, JWT_SECRET } = require("./auth");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "https://nutriorder-sigma.vercel.app",
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 app.use(express.json());
 
 // ─── AUTH ──────────────────────────────────────────────────────────────────────
