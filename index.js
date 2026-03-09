@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
@@ -7,7 +8,10 @@ const { authMiddleware, requireRuolo, JWT_SECRET } = require("./auth");
 
 const app = express();
 app.use(cors({
-  origin: "https://nutriorder-sigma.vercel.app",
+  origin: [
+    "https://nutriorder-sigma.vercel.app",
+    "http://localhost:3000"
+  ],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
